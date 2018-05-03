@@ -3,14 +3,23 @@ import { connect } from 'react-redux'
 
 class PlaylistList extends Component {
 	render() {
-		return (
-			<div>
-				playlist list
-				{this.props.playlists.map((playlist) => {
-					<p>{playlist.name}</p>
-				})}
-			</div>
-		)
+		if(this.props.playlists === undefined){
+			return <p>no playlists yet</p>
+		} else {
+			return (
+				<div>
+					playlist list
+					{console.log(this.props.playlists[0])}
+					{this.props.playlists.map((playlist) => {
+						return <div>
+							hello
+							<p key={playlist.name}>{playlist.name}</p>
+							</div>
+					})}
+				</div>
+			)
+		}
+		
 	}
 }
 

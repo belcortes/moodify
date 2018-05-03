@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+import { fetchPlaylists } from './actions/index'
 // import axios from 'axios'
 // import queryString from 'query-string';
 // import SpotifyWebApi from 'spotify-web-api-js'
@@ -30,6 +34,7 @@ class App extends Component {
     // spotifyApi.getMe(function(data) {
     //   console.log(data)
     // })
+    this.props.fetchPlaylists()
   }
 
   render() {
@@ -42,4 +47,8 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({fetchPlaylists}, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(App);
