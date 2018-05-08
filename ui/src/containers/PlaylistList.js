@@ -14,11 +14,14 @@ const PlaylistList = (props) => {
 		<div>
 			<h2>{props.playlists.total} playlists</h2>
 			<ul>
+				{console.log(props.playlists)}
 				{
 					props.playlists.items.map((playlist) => {
-						return <li 
+						return (
+							<li 
 							key={playlist.name}
 							onClick={() => props.selectPlaylist(playlist)}>{playlist.name}</li>
+						)
 					})
 				}
 			</ul>

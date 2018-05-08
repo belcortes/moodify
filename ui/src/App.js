@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import PlaylistList from './containers/PlaylistList'
+import ActivePlaylist from './containers/ActivePlaylist'
 import { fetchPlaylists } from './actions/index'
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
       <div className="App">
         moodify
         <PlaylistList />
+        <ActivePlaylist />
       </div>
     );
   }
