@@ -1,21 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import Playlist from '../components/Playlist'
+
 class PlaylistList extends Component {
 	render() {
-		if(this.props.playlists === undefined){
-			return <p>no playlists yet</p>
-		} else {
+		{console.log(this.props.playlists)}
+		if(this.props.playlists != {}){
+			console.log('yoo')
 			return (
 				<div>
 					playlist list
-					{console.log(this.props.playlists[0])}
-					{this.props.playlists.map((playlist) => {
-						return <div>
-							hello
-							<p key={playlist.name}>{playlist.name}</p>
-							</div>
-					})}
+					<h2>{this.props.playlists.total}</h2>
+					{console.log(this.props.playlists.items)}
+			
+					
 				</div>
 			)
 		}
@@ -28,3 +27,10 @@ function mapStateToProps({playlists}) {
 }
 
 export default connect(mapStateToProps)(PlaylistList)
+
+// /  {this.props.playlists.items.map((playlist) => {
+// 					// 	return <Playlist playlist={playlist}/>
+// 					// })}
+
+
+
