@@ -1,36 +1,41 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { selectPlaylist } from '../actions/index'
 
-import Playlist from '../components/Playlist'
+// import Playlist from '../components/Playlist'
 
-class PlaylistList extends Component {
-	render() {
-		{console.log(this.props.playlists)}
-		if(this.props.playlists != {}){
-			console.log('yoo')
-			return (
-				<div>
-					playlist list
-					<h2>{this.props.playlists.total}</h2>
-					{console.log(this.props.playlists.items)}
-			
-					
-				</div>
-			)
-		}
-		
-	}
+const PlaylistList = (props) => {
+	if(!props.playlists) {
+		return <div>Loading...</div>
+	} 
+
+	return (
+		<div>
+			<h2>{props.playlists.total} playlists</h2>
+			<ul>
+				{
+					props.playlists.items.map((playlist) => {
+						return <li 
+							key={playlist.name}
+							onClick={() => props.selectPlaylist(playlist)}>{playlist.name}</li>
+					})
+				}
+			</ul>
+		</div>
+	)
 }
 
 function mapStateToProps({playlists}) {
 	return {playlists}
 }
 
-export default connect(mapStateToProps)(PlaylistList)
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({selectPlaylist: selectPlaylist}, dispatch)
+}
 
-// /  {this.props.playlists.items.map((playlist) => {
-// 					// 	return <Playlist playlist={playlist}/>
-// 					// })}
+export default connect(mapStateToProps, mapDispatchToProps)(PlaylistList)
+
 
 
 

@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { fetchPlaylists } from './actions/index'
-
 import PlaylistList from './containers/PlaylistList'
+import { fetchPlaylists } from './actions/index'
 
 class App extends Component {
 
