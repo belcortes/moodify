@@ -1,16 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
+// import { bindActionCreators } from 'redux'
+// import { selectedPlaylistValence } from '../actions/index'
 
 const ActivePlaylist = (props) => {
 	if(!props.playlist){
 		return <div>Select a playlist to get started</div>
 	}
-	{console.log(props.playlist)}
 	return (
 		<div>
-			<p>{props.activePlaylistValence}</p>
 			{
 				props.playlist.items.map((track) => {
+					// props.selectedPlaylistValence(track.track.id)
 					return <p key={track.track.id}>{track.track.name}</p>
 				})
 			}
@@ -24,5 +25,11 @@ function mapStateToProps(state){
 		activePlaylistValence: state.activePlaylistValence
 	}
 }
+
+// function mapDispatchToProps(dispatch) {
+// 	return bindActionCreators({
+// 		selectedPlaylistValence: selectedPlaylistValence
+// 	}, dispatch)
+// }
 
 export default connect(mapStateToProps)(ActivePlaylist)

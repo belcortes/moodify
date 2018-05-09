@@ -5,6 +5,7 @@ const ROOT_URL = 'https://api.spotify.com/v1/me'
 
 export const FETCH_PLAYLISTS = 'FETCH_PLAYLISTS'
 export const PLAYLIST_SELECTED = 'PLAYLIST_SELECTED'
+export const SELECTED_PLAYLIST_TRACKS = 'SELECTED_PLAYLIST_TRACKS'
 export const SELECTED_PLAYLIST_VALENCE = 'SELECTED_PLAYLIST_VALENCE'
 
 function getRequest(url) {
@@ -38,14 +39,26 @@ export function selectPlaylist(playlist) {
 	}
 }
 
-export function selectedPlaylistValence(playlist) {
-	const tracks = selectPlaylist(playlist)
-	const trackIds = []
-    tracks.forEach((track)=> {
-      trackIds.push(track.track.id)
-    })
+export function fetchActivePlaylistTracks(playlist) {
+	const url = playlist.tracks.href
+	const request = getRequest(url)
 
-	const url = `https://api.spotify.com/v1/audio-features/?ids=${trackIds}`
+	return {
+		type: SELECTED_PLAYLIST_TRACKS,
+		payload: request
+	}
+}
+
+export function selectedPlaylistValence(ids) {
+	// const tracks = []
+	// const request = getRequest(playlist.tracks.href)
+	// console.log(request.data)
+	// const trackIds = [1, 2, 3]
+  // tracks.payload.forEach((track)=> {
+  //   trackIds.push(track.track.id)
+  // })
+
+	const url = `https://api.spotify.com/v1/audio-features/?ids=${ids}`
 	const request = getRequest(url)
 
 	return {
