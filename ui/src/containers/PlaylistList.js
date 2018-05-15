@@ -8,7 +8,7 @@ import { selectPlaylist, fetchActivePlaylistTracks } from '../actions/index'
 const PlaylistList = (props) => {
 	if(!props.playlists) {
 		return <div>Loading...</div>
-	} 
+	}
 
 	return (
 		<div>
@@ -17,11 +17,11 @@ const PlaylistList = (props) => {
 				{
 					props.playlists.items.map((playlist) => {
 						return (
-							<li 
+							<li
 							key={playlist.name}
 							onClick={() => {
 								props.selectPlaylist(playlist)
-								// props.fetchActivePlaylistTracks(props.trackIds)
+								props.fetchActivePlaylistTracks(playlist)
 							}}>{playlist.name}</li>
 						)
 					})
@@ -46,7 +46,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaylistList)
-
-
-
-

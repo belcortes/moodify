@@ -42,14 +42,14 @@ export function selectPlaylist(playlist) {
 export function fetchActivePlaylistTracks(playlist) {
 	const url = playlist.tracks.href
 	const request = getRequest(url)
-
+	
 	return {
 		type: SELECTED_PLAYLIST_TRACKS,
 		payload: request
 	}
 }
 
-export function selectedPlaylistValence(ids) {
+// export function selectedPlaylistValence(ids) {
 	// const tracks = []
 	// const request = getRequest(playlist.tracks.href)
 	// console.log(request.data)
@@ -58,11 +58,11 @@ export function selectedPlaylistValence(ids) {
   //   trackIds.push(track.track.id)
   // })
 
-	const url = `https://api.spotify.com/v1/audio-features/?ids=${ids}`
-	const request = getRequest(url)
-
-	return {
-		type: SELECTED_PLAYLIST_VALENCE,
-		payload: request
-	}
-}
+	// const url = `https://api.spotify.com/v1/audio-features/?ids=${ids}`
+	// const request = getRequest(url)
+	//
+	// return {
+	// 	type: SELECTED_PLAYLIST_VALENCE,
+	// 	payload: request
+	// }
+// }

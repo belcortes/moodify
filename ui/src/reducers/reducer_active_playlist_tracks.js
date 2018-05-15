@@ -3,13 +3,12 @@ import { SELECTED_PLAYLIST_TRACKS } from '../actions/index'
 export default function(state = null, action) {
 	switch(action.type) {
 		case SELECTED_PLAYLIST_TRACKS:
-			const trackIds = []
+			const tracks = []
 			action.payload.data.items.forEach((track) => {
-				trackIds.push(track.track.id)
+				tracks.push(track)
 			})
-			console.log(trackIds)
-			return trackIds;
-		default: 
+			return tracks;
+		default:
 			return state;
 	}
 }

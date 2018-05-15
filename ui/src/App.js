@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 
 import PlaylistList from './containers/PlaylistList'
 import ActivePlaylist from './containers/ActivePlaylist'
@@ -24,7 +23,9 @@ class App extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchPlaylists}, dispatch)
+  return {
+    fetchPlaylists: () => { dispatch(fetchPlaylists()); }
+  };
 }
 
 export default connect(null, mapDispatchToProps)(App);
