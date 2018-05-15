@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { selectPlaylist, fetchActivePlaylistTracks } from '../actions/index'
+import { selectPlaylist, fetchActivePlaylistTracks, fetchValence } from '../actions/index'
 
 // import Playlist from '../components/Playlist'
 
@@ -22,6 +22,7 @@ const PlaylistList = (props) => {
 							onClick={() => {
 								props.selectPlaylist(playlist)
 								props.fetchActivePlaylistTracks(playlist)
+								// props.fetchValence(playlist)
 							}}>{playlist.name}</li>
 						)
 					})
@@ -41,6 +42,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators({
 		selectPlaylist: selectPlaylist,
+		fetchValence: fetchValence,
 		fetchActivePlaylistTracks: fetchActivePlaylistTracks
 	}, dispatch)
 }
